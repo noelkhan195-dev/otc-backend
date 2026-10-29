@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-// Health Check Endpoint (Server Sleep na hone ke liye)
+// Health Check Endpoint
 app.get('/api/health', (req, res) => {
   res.status(200).json({ 
     status: "active", 
@@ -25,8 +25,8 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 OTC Backend Server Running On Port ${PORT}`);
 
-  // Auto Self-Ping Logic (Deployment ke baad live URL update karenge)
-  const LIVE_SERVER_URL = "https://otc-backend.onrender.com/api/health";
+  // Auto Self-Ping Logic (Fly.io se live URL milne ke baad yahan update kar sakte hain)
+  const LIVE_SERVER_URL = "https://otc-backend.fly.dev/api/health";
   
   setInterval(async () => {
     try {
